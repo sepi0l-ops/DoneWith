@@ -1,9 +1,12 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
+import ButtonComponent from '../components/ButtonComponent'
+import routes from '../navigation/routes';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
+            blurRadius={10}
             source={require('../assets/background.jpg')}
             style={styles.background}
         >
@@ -12,10 +15,12 @@ function WelcomeScreen(props) {
                     source={require('../assets/logo-red.png')}
                     style={styles.logo}
                 />
-                <Text>Sell What You Don't Need</Text>
+                <Text style={styles.tagline}>Sell What You Don't Need</Text>
             </View>
-            <View style={styles.loginButton}></View>
-            <View style={styles.registerButton}></View>
+            <View style={styles.buttonsContainer}>
+                <ButtonComponent title='Login' color='primary' onPress={() => navigation.navigate(routes.LOGIN)}/>
+                <ButtonComponent title='Register' color='secondary' onPress={() => navigation.navigate(routes.REGISTER)}/>
+            </View>
         </ImageBackground>
     );
 }
@@ -25,16 +30,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center' //align items along secondary axis
     },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: '#fc5c65'
-    },
-    registerButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: '#4ecdc4'
-    },
     logo: {
         width: 100,
         height: 100,
@@ -43,6 +38,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 70,
         alignItems: 'center'
+    },
+    buttonsContainer: {
+        padding: 20,
+        width: '100%'
+    },
+    tagline: {
+        fontSize: 25,
+        fontWeight: '600',
+        paddingVertical: 20,
     }
 })
 export default WelcomeScreen;

@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "hermes",
     "name": "DoneWithIt",
     "slug": "DoneWithIt",
     "version": "1.0.0",
@@ -8,8 +9,8 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./app/assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#e63c4b"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -18,13 +19,33 @@
       "supportsTablet": true
     },
     "android": {
+      "useNextNotificationsApi": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses you photos to let you share them with your friends"
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "04498dd3-302f-4ae4-ae03-8ef8836ee036"
+      }
+    },
+    "owner": "sepi0l"
   }
 }
